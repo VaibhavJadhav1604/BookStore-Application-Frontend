@@ -1,0 +1,44 @@
+.bookspanel
+{
+    margin: auto;
+    height: 80px;
+    width: 80%;
+    border: 1px solid white;
+}
+.leftheader
+{
+    height: 60px;
+    width: 300px;
+    border: 1px solid white;
+    margin-top: 10px;
+}
+.allbooks
+{
+    margin: auto;
+    width: 80%;
+    height: 344px;
+}
+.books
+{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    height: 300px;
+    width: 15%;
+    border: 1px solid lightgrey;
+}
+.bookimage
+{
+    height: 150px;
+    width: 120px;
+    margin-left: 63px;
+    margin-top: 13px;
+    cursor: pointer;
+}
+.bookdata
+{
+    margin: auto;
+    width: 80%;
+    height: 40%;
+}

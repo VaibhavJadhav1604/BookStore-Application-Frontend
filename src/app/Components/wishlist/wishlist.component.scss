@@ -1,0 +1,66 @@
+.header {
+    margin: auto;
+    height: 6%;
+    width: 60%;
+    border: 1px solid white;
+    font-family: Google Sans;
+}
+
+.innertop {
+    height: 55px;
+    width: 300px;
+    border: 1px solid white;
+}
+
+.main {
+    margin: auto;
+    height: 6%;
+    width: 60%;
+    border: 1px solid lightgray;
+    font-family: Google Sans;
+}
+
+.innermid {
+    height: 55px;
+    width: 300px;
+    border: 1px solid white;
+}
+
+.bookspanel {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.bookimg {
+    width: 15%;
+    height: 100%;
+    border: 1px solid white;
+    display: inline-block;
+}
+
+.bookdetails {
+    margin-left: 10px;
+    width: 84%;
+    height: 100%;
+    border: 1px solid white;
+    display: inline-block;
+}
+
+.midimg {
+    margin-top: 30px;
+    margin-left: 35px;
+    height: 130px;
+    width: 100px;
+    border: 1px solid red;
+}
+
+.deletebtn {
+    display: inline-block;
+    width: 50px;
+    height: 90px;
+    float: right;
+    margin-right: 20px;
+    background: transparent;
+}

@@ -1,0 +1,98 @@
+<div class="main">
+    <div class="container">
+        <div class="left-container">
+            <img src="../../../assets/main.png" class="leftimg">
+            <p>ONLINE BOOK SHOPPING</p>
+        </div>
+        <div class="right-container">
+            <div class="header">
+                <button routerLink="/Signin" class="hdbtn"><b>LOGIN</b></button>
+                <button routerLink="/Signup" class="hdbtn" style="color:grey"><b>SIGNUP</b></button>
+            </div>
+            <br>
+            <form [formGroup]="Loginform" (ngSubmit)="OnSubmit()">
+                <div class="form-field">
+                    <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label aria-autocomplete="off">Email id</mat-label>
+                            <input matInput type="email" formControlName="EmailId"/>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label aria-autocomplete="off">Password</mat-label>
+                            <input matInput type="password" formControlName="Password"/>
+                            <mat-hint style="margin-left: 200px;color: grey;cursor: pointer;" routerLink="/ForgotPassword">ForgotPassword?</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="logbtn">
+                        <button class="button" style="color: white;">Login</button>
+                    </div>
+                    <br>
+                    <div>
+                        <h3 class="text">----------------- <strong>OR</strong> -----------------</h3>
+                    </div>
+                    <div class="footer">
+                        <button class="footerbtn" style="background: #4266B2;color: white;">Facebook</button>
+                        <button class="footerbtn" style="margin-left: 3px;color: black;background: #b6b6b6;">Google</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container">
+    <div class="left-container">
+        <img class="logo" src="../../../assets/2766594.png">
+        <p>ONLINE BOOK SHOPPING</p>
+    </div>
+
+    <div class="right-container">
+        <div class="header">
+            <div>
+                <button routerLink="/signin">LOGIN</button>
+            </div>
+            <div>
+                <button style="color: #878787;" routerLink="/signup">SIGNUP</button>
+            </div>
+        </div>
+        <form>
+            <div class="form-field">
+                <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email Id</mat-label>
+                        <input matInput placeholder="Email Id" type="text" formControlName="email">
+                        <mat-error>Enter Email Id</mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Password" type="password" formControlName="password">
+                        <mat-error>Enter Password</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="forget-pass">
+                    <h3><a class="link" routerLink="/forgetPassword">Forget password?</a></h3>
+                </div>
+                <div class="sign-field">
+                    <button class="button">Login</button>
+                </div>
+                <div>
+                    <p class="text">--------------  OR   --------------</p>
+                </div>
+                <div class="choose-btn">
+                    <div>
+                      <button type="submit" class="facebook-btn">Facebook</button>
+                    </div>
+                    <div>
+                      <button type="submit" class="google-btn">Google</button>
+                    </div>
+                  </div>
+            </div>
+        </form>
+    </div>
+</div> -->

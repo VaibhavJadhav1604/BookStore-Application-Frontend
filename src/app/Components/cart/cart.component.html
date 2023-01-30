@@ -1,0 +1,205 @@
+<div class="header">
+    <div class="innertop">
+        <div style="height: 30px;width: 180px;margin-top: 15px;">
+            <p style="font-size: 15px;display: inline;">Home/MyCart</p>
+            <p id="count" style="font-size: 12px;display: inline;"></p>
+        </div>
+    </div>
+</div>
+<div class="cartdetails">
+    <div class="carttop">
+        <div class="left">
+            <h3 style="font-size: 20px;padding-top: 10px;">My Cart(01)</h3>
+        </div>
+        <div class="right">
+            <mat-form-field appearance="outline">
+                <mat-label>Location</mat-label>
+                <mat-select>
+                    <mat-option>Location 1</mat-option>
+                    <mat-option>Location 2</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="cartmid" *ngFor="let cart of cartlist">
+        <div class="leftmid">
+            <img class="midimg" [src]="cart.bookModel.bookImage">
+        </div>
+        <div class="rightmid">
+            <div style="margin-top: 17px;font-size: 20px;font-weight: 400;">{{cart.bookModel.bookName}}</div>
+            <div style="color: gray;margin-top: 10px;font-size: 15px;">By {{cart.bookModel.authorName}}</div>
+            <div style="margin-top: 10px;margin-bottom: 15px;">
+                <p style="display: inline;font-size: 20px;font-weight: 500;">Rs.{{cart.bookModel.discountPrice}}</p>
+                <s>
+                    <p style="display: inline;font-size: 13px;color: gray;margin-left: 15px;">
+                        Rs.{{cart.bookModel.originalPrice}}</p>
+                </s>
+            </div>
+            <div class="buttons">
+                <button mat-mini-fab class="plusminus" [disabled]="cart.quantity == 1" (click)="decrease(cart.cartId,cart.quantity)"><i class="material-icons">&#xe15b;</i></button>
+                <span class="cartqty">{{cart?.quantity}}</span>
+                <button mat-mini-fab class="plusminus" [disabled]="cart.quantity == 4" (click)="increase(cart.cartId,cart.quantity)"><i class="material-icons">&#xe145;</i></button>
+            </div>
+            <button class="rmbtn" (click)="RemoveFromCart(cart.cartId)">
+                Remove
+            </button>
+        </div>
+    </div>
+    <div class="cartbottom">
+        <button class="pobtn" (click)="hideAndShow()" (click)="hideAndShow1()" *ngIf="!show1">PLACE ORDER</button>
+    </div>
+</div>
+<br>
+<div class="addressdetails">
+    <div class="addressnameplate" (click)="hideAndShow()" *ngIf="show || !show">
+        Address Details
+    </div>
+</div>
+<br>
+<div class="address" *ngIf="show">
+    <div class="carttop1">
+        <div class="left1">
+            <h3 style="font-size: 20px;padding-top: 10px;">Customer Details</h3>
+        </div>
+        <div class="right1">
+            <button mat-stroked-button style="border: 1px solid red;color: red;" (click)="addrshow()" *ngIf="addr1 || !addr1">Add New Address</button>
+        </div>
+    </div>
+    <div class="useraddress" *ngFor="let address of addressList">
+        <div style="height: 85px;border-bottom: 1px solid white;" *ngIf="!addr1">
+            <div style="display: inline-block;width: 48%;height: 78px;">
+                <mat-hint>Full Name</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput disabled [(ngModel)]="fullName"/>
+                </mat-form-field>
+            </div>
+
+            <div style="display: inline-block;float: right;width: 48%;height: 78px;">
+                <mat-hint>Phone Number</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput disabled [(ngModel)]="phoneNumber"/>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="height: 110px;border-bottom: 1px solid white;margin-top: 10px;" *ngIf="!addr1">
+            <div style="display: inline-block;width: 100%;height: 78px;">
+                <mat-hint>Address</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <textarea matInput style="resize: none;" disabled [(ngModel)]="address.fullAddress"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="height: 85px;border-bottom: 1px solid white;margin-top: 10px;" *ngIf="!addr1">
+            <div style="display: inline-block;width: 48%;height: 78px;">
+                <mat-hint>City/Town</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput disabled [(ngModel)]="address.city"/>
+                </mat-form-field>
+            </div>
+
+            <div style="display: inline-block;float: right;width: 48%;height: 78px;">
+                <mat-hint>State</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput disabled [(ngModel)]="address.state"/>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div style="height: 80px;width: 800px;margin-top: 10px;" *ngIf="!addr1">
+            <mat-hint>Type</mat-hint>
+            <div class="innerrad">
+                <mat-radio-group style="margin-top: 10px;">
+                    <mat-radio-button id="1" value="Home">Home</mat-radio-button>
+                    <mat-radio-button id="2" style="margin-left: 200px;" value="Office">Office</mat-radio-button>
+                    <mat-radio-button id="3" style="margin-left: 200px;">Others</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+    <div class="useraddress"  *ngIf="addr1">
+        <div style="height: 85px;border-bottom: 1px solid white;">
+            <div style="display: inline-block;width: 48%;height: 78px;">
+                <mat-hint>Full Name</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput disabled [(ngModel)]="fullName"/>
+                </mat-form-field>
+            </div>
+
+            <div style="display: inline-block;float: right;width: 48%;height: 78px;">
+                <mat-hint>Phone Number</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput disabled [(ngModel)]="phoneNumber"/>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="height: 110px;border-bottom: 1px solid white;margin-top: 10px;">
+            <div style="display: inline-block;width: 100%;height: 78px;">
+                <mat-hint>Address</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <textarea matInput style="resize: none;" [(ngModel)]="fullAddress"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="height: 85px;border-bottom: 1px solid white;margin-top: 10px;" >
+            <div style="display: inline-block;width: 48%;height: 78px;">
+                <mat-hint>City/Town</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput [(ngModel)]="city"/>
+                </mat-form-field>
+            </div>
+
+            <div style="display: inline-block;float: right;width: 48%;height: 78px;">
+                <mat-hint>State</mat-hint>
+                <mat-form-field appearance="outline" style="width: 100%;height: 63px;">
+                    <mat-label aria-autocomplete="off"></mat-label>
+                    <input matInput [(ngModel)]="state"/>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div style="height: 80px;width: 800px;margin-top: 10px;" >
+            <mat-hint>Type</mat-hint>
+            <div class="innerrad">
+                <mat-radio-group style="margin-top: 10px;">
+                    <mat-radio-button name="type" ngDefaultControl id="1" value="1" [(ngModel)]="typeId">Home</mat-radio-button>
+                    <mat-radio-button style="margin-left: 200px;" ngDefaultControl id="1" name="type" value="2" [(ngModel)]="typeId">Office</mat-radio-button>
+                    <mat-radio-button style="margin-left: 200px;" ngDefaultControl id="1" name="type" value="3" [(ngModel)]="typeId">Others</mat-radio-button>
+                    <button mat-flat-button color="primary" type="submit" style="float: right;margin-right: 50px;" (click)="addAddress()">AddAddress</button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 10px;"></div>
+<div class="orderdetails" *ngFor="let cart of cartlist">
+    <div class="ordernameplate" (click)="hideAndShow1()" *ngIf="show1 || !show1">Order Summary
+        <div class="orders" *ngIf="show1">
+            <div class="cartmid" *ngFor="let address of addressList">
+                <div style="display: inline-block;">
+                    <img [src]="cart.bookModel.bookImage" style="  height: 130px;width: 100px;">
+                </div>
+                <div class="rightmid">
+                    <div style="margin-top: 17px;font-size: 20px;font-weight: 400;">{{cart?.bookModel.bookName}}</div>
+                    <div style="color: gray;margin-top: 10px;font-size: 15px;">By {{cart?.bookModel.authorName}}</div>
+                    <div style="margin-top: 10px;margin-bottom: 15px;">
+                        <p style="display: inline;font-size: 20px;font-weight: 500;">Rs.{{cart.bookModel.discountPrice}}</p>
+                        <s>
+                            <p style="display: inline;font-size: 13px;color: gray;margin-left: 15px;">Rs.{{cart.bookModel.discountPrice}}</p>
+                        </s>
+                    </div>
+                    <button
+                        style="height: 35px;width: 150px;background-color: red;float: right;margin-right: 30px;color: white;background:rgb(92, 92, 201);border: none;cursor: pointer;" (click)="addOrder(cart.bookId,address.addressId)">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

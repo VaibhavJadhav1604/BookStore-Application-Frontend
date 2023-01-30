@@ -1,0 +1,45 @@
+<div class="main">
+    <div class="container">
+        <div class="left-container">
+            <img src="../../../assets/main.png" class="leftimg">
+            <p>ONLINE BOOK SHOPPING</p>
+        </div>
+        <div class="right-container">
+            <div class="header">
+                <button routerLink="/Signin" class="hdbtn" style="color:grey"><b>LOGIN</b></button>
+                <button routerLink="/Signin" class="hdbtn"><b>SIGNUP</b></button>
+            </div>
+            <form [formGroup]="Registrationform" (ngSubmit)="OnSubmit()">
+                <div class="form-field">
+                    <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput formControlName="FullName"/>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label aria-autocomplete="off">Email id</mat-label>
+                            <input matInput type="email" formControlName="EmailId"/>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label aria-autocomplete="off">Password</mat-label>
+                            <input matInput type="password" formControlName="Password"/>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label aria-autocomplete="off">Phone Number</mat-label>
+                            <input matInput formControlName="PhoneNumber"/>
+                        </mat-form-field>
+                    </div>
+                    <div class="logbtn">
+                        <button class="button" style="color: white;">Signup</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
